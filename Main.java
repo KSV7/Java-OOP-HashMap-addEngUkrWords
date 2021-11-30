@@ -10,15 +10,19 @@ public class Main {
 	public static void main(String[] args) {
 		Map<String, String> hmap = new HashMap<String, String>();
 		
+		TranslateClass tr = new TranslateClass();
+		
 //		TranslateClass.addEngUkrWords("one","один");
 //		TranslateClass.addEngUkrWords("two","два");
 //		TranslateClass.addEngUkrWords("three","три");
 //		TranslateClass.addEngUkrWords("four","чотири");
 //		TranslateClass.addEngUkrWords("five","п'ять");
-		TranslateClass.addEngUkrWords("seven","сім");
-		TranslateClass.addEngUkrWords("eleven","одинадцять");
+		tr.addEngUkrWords("seven","сім");
+		tr.addEngUkrWords("eleven","одинадцять");
+		tr.addEngUkrWords("twenty","двадцять");
 		
-		hmap = TranslateClass.engUkrWords();	
+		
+		hmap = tr.engUkrWords();	
 		Set set = hmap.entrySet();
 		Iterator iterator = set.iterator();
 		while (iterator.hasNext()) {

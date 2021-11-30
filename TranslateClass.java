@@ -16,22 +16,22 @@ import java.util.Map;
 import java.util.Set;
 
 public class TranslateClass implements Serializable {
-	private static final long serialVersionUID = 1L;
-	private static Map<String, String> dict = new HashMap<>();
+	private final long serialVersionUID = 1L;
+	private Map<String, String> dict = new HashMap<>();
 
 	public TranslateClass() {
 		super();
 	}
 
-	public static Map<String, String> getDict() {
+	public Map<String, String> getDict() {
 		return dict;
 	}
 
-	public static void setDict(Map<String, String> dict) {
-		TranslateClass.dict = dict;
+	public void setDict(Map<String, String> dict) {
+		this.dict = dict;
 	}
 
-	public static Map<String, String> engUkrWords() {
+	public Map<String, String> engUkrWords() {
 		HashMap<String, String> map = null;
 		try {
 			FileInputStream fis = new FileInputStream("hashmap.ser");
@@ -50,7 +50,7 @@ public class TranslateClass implements Serializable {
 		return map;
 	}
 	
-	public static void getEngUkrWords() {
+	public void getEngUkrWords() {
 		Set set = engUkrWords().entrySet();
 		Iterator iterator = set.iterator();
 		while (iterator.hasNext()) {
@@ -59,7 +59,7 @@ public class TranslateClass implements Serializable {
 		}
 	}
 
-	public static void addEngUkrWords(String engWord, String ukrWord) {
+	public void addEngUkrWords(String engWord, String ukrWord) {
 		getEngUkrWords();
 		dict.put(engWord, ukrWord);
 		try {
@@ -73,7 +73,7 @@ public class TranslateClass implements Serializable {
 		}
 	}
 
-	public static String getTextFromFileToString(String s) {
+	public String getTextFromFileToString(String s) {
 		try (BufferedReader f = new BufferedReader(new FileReader(s))) {
 			String str = "";
 			String res = "";
@@ -85,7 +85,7 @@ public class TranslateClass implements Serializable {
 		}
 	}
 
-	public static void translateWords(String fileIn, String fileOut) {
+	public void translateWords(String fileIn, String fileOut) {
 		char[] letters = getTextFromFileToString(fileIn).toCharArray();
 		String resText = "";
 		if (letters.length != 0) {
